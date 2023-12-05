@@ -7,12 +7,14 @@ import Itemprovider from './Store/Itemprovider';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 import About from './About/About';
 import Footer from './UI/Footer';
+import Home from './Home/Home';
 
 
 const router = createBrowserRouter([
   {path :'/', element: <Product/>},
   {path :'/store', element: <Product/>},
   {path :'/about', element: <About/>},
+  {path :'/home', element: <Home/>},
 ])
 
 function App(props) {
