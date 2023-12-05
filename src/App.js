@@ -1,13 +1,29 @@
 import './App.css';
 import Product from './Product/Product';
-import React ,{Fragment} from 'react';
+import Cart from './Cart/Cart';
+import React ,{useState} from "react";
+import Header from './UI/Header';
+import Itemprovider from './Store/Itemprovider';
 
-function App() {
+function App(props) {
+
+  const [Hidecart, setHidecart]= useState(false)
+
+  const showcart=()=>{
+    setHidecart(true)
+  }
+
+  const hidecart=()=>{
+    setHidecart(false)
+  }
+
   return (
-    <Fragment>
-      <Product/>
-    </Fragment>
-    
+    <Itemprovider>
+      {Hidecart && <Cart onClose={hidecart}/>}
+      <Header onOpen={showcart} />
+      <Product />
+
+    </Itemprovider>
   );
 }
 
