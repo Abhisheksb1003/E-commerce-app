@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from "react";
 import { Card, Container, Row } from "react-bootstrap";
 import Modal from "../UI/Modal";
 import Itemstore from "../Store/Itemstore";
+import Itemprovider from "../Store/Itemprovider";
 
 
 const Cart = (props) => {

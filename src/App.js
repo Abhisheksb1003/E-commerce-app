@@ -4,6 +4,16 @@ import Cart from './Cart/Cart';
 import React ,{useState} from "react";
 import Header from './UI/Header';
 import Itemprovider from './Store/Itemprovider';
+import { createBrowserRouter,RouterProvider } from 'react-router-dom';
+import About from './About/About';
+import Footer from './UI/Footer';
+
+
+const router = createBrowserRouter([
+  {path :'/', element: <Product/>},
+  {path :'/store', element: <Product/>},
+  {path :'/about', element: <About/>},
+])
 
 function App(props) {
 
@@ -21,7 +31,8 @@ function App(props) {
     <Itemprovider>
       {Hidecart && <Cart onClose={hidecart}/>}
       <Header onOpen={showcart} />
-      <Product />
+      <RouterProvider router={router}/>
+      <Footer/>
 
     </Itemprovider>
   );
