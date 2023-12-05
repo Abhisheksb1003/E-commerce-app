@@ -12,7 +12,6 @@ const Cart = (props) => {
     return (
       <Modal>
         <button onClick={props.onClose}>Close</button>
-  
         <Container>
           {cartctx.cart.map((cartitem) => (
             <Row>
