@@ -4,32 +4,21 @@ import Itemstore from "./Itemstore";
 
 const Itemprovider = (props) => {
   const [cartElements, setCartElements] = useState([]);
-  //   const cartElements = [
-  //     {
-  //       title: "Colors",
-  //       price: 100,
-  //       imageUrl:
-  //         "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-  //       quantity: 2,
-  //     },
-  //     {
-  //       title: "Black and white Colors",
-  //       price: 50,
-  //       imageUrl:
-  //         "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-  //       quantity: 3,
-  //     },
-  //     {
-  //       title: "Yellow and Black Colors",
-  //       price: 70,
-  //       imageUrl:
-  //         "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-  //       quantity: 1,
-  //     },
-  //   ];
+  const initialtoken = localStorage.getItem('idToken')
+  const [token , setToken]=useState(initialtoken);
+
+  const userIsLoggedIn = !!token;
 
 
+  const LoginHandler=(token)=>{
+    setToken(token);
+    localStorage.setItem('idToken', token);
+  }
 
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("idToken");
+  };
 
   const productsArr = [
     {
@@ -61,8 +50,6 @@ const Itemprovider = (props) => {
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
     },
   ];
-
-
   const addtocartHandler = (item) => {
     const existingCartItem = cartElements.find(
       (cartitem) => cartitem.id === item.id
@@ -73,11 +60,15 @@ const Itemprovider = (props) => {
       setCartElements((prevItems) => [...prevItems, {...item, quantity:1 }]);
     }
   };
-
   const itemstore = {
     cart: cartElements,
     product:productsArr,
     addToCart: addtocartHandler,
+    token:token,
+    isLoggedIn:userIsLoggedIn,
+    login: LoginHandler,
+    logout: logoutHandler,
+
   };
 
   return (

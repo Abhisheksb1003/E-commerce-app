@@ -1,23 +1,19 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, {useContext} from "react";
 import { useParams } from "react-router-dom";
 import Itemstore from "../Store/Itemstore";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
-import Contact from "../Contact/Contact";
+
 
 const ProductDetails = () => {
   const params = useParams();
   let product = {};
-
   const context = useContext(Itemstore);
-
   context.product.map((item) => {
     if (item.id === params.productID) {
       product = item;
-      return product;
     }
     return item;
   });
-
   return (
     <Container className="mt-5 mb-5 ">
       <Card className="border-dark rounded">
@@ -26,7 +22,6 @@ const ProductDetails = () => {
             <Card.Title className="d-flex fs-2 justify-content-center text-muted">
               <h1>{product.title}</h1>
             </Card.Title>
-
             <Card.Img src={product.imageUrl} height="300px" />
           </Col>
           <Col className="p-5">
