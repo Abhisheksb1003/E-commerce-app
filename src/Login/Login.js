@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Itemstore from "../../Store/Itemstore";
+import Itemstore from "../Store/Itemstore";
 
 const Login = () => {
   const itemctx = useContext(Itemstore);

@@ -17,17 +17,13 @@ import Itemstore from './Store/Itemstore';
 function App(props) {
   const itemctx = useContext(Itemstore);
   const [Hidecart, setHidecart] = useState(false);
-
   const isLoggedIn = itemctx.isLoggedIn;
-
   const showcart = () => {
     setHidecart(true);
   };
-
   const hidecart = () => {
     setHidecart(false);
   };
-
   return (
     <Fragment>
       {console.log(isLoggedIn)}
@@ -39,7 +35,7 @@ function App(props) {
         </Route>
         <Route path="/store" exact>
           {isLoggedIn && <Product />}
-          {!isLoggedIn && <Redirect to="/about" />}
+          {!isLoggedIn && <Redirect to="/login" />}
         </Route>
         <Route path="/about">
           <About />
@@ -66,5 +62,4 @@ function App(props) {
     </Fragment>
   );
 }
-
 export default App;

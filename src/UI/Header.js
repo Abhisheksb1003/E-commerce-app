@@ -8,12 +8,10 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 const Header = (props) => {
   const cartctx = useContext(Itemstore);
   const history = useHistory();
-
   const logoutHandler=()=>{
       cartctx.logout();
       history.replace("/login");
   }
-
   let totalcount = 0;
   cartctx.cart.forEach((cartitem) => {
     totalcount = totalcount + cartitem.quantity;
@@ -26,9 +24,9 @@ const Header = (props) => {
             <ul>
               <NavLink to="/home">Home</NavLink>
             </ul>
-            <ul>
+            {/* <ul>
               <NavLink to="/store">Store</NavLink>
-            </ul>
+            </ul> */}
             <ul>
               <NavLink to="/about">About</NavLink>
             </ul>
